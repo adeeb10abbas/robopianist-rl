@@ -37,6 +37,7 @@ class Args:
     notes: str = ""
     mode: str = "disabled"
     environment_name: str = "RoboPianist-debug-TwinkleTwinkleRousseau-v0"
+    midi_name: str = ""
     n_steps_lookahead: int = 10
     trim_silence: bool = False
     gravity_compensation: bool = False
@@ -67,6 +68,7 @@ def prefix_dict(prefix: str, d: dict) -> dict:
 def get_env(args: Args, record_dir: Optional[Path] = None):
     env = suite.load(
         environment_name=args.environment_name,
+        midi_file = args.midi_name,
         seed=args.seed,
         stretch=args.stretch_factor,
         shift=args.shift_factor,
